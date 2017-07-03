@@ -71,7 +71,7 @@ When running on the CPU pass the device flag ```-d '/cpu:0'``` to the training s
 ## Runing locally
 Requirements
 * Python 3.4+
-* TensorFlow 1.0+
+* TensorFlow 1.0+ (choose a GPU version, if you have GPU)
 * [Arcade-Learning-Environment](https://github.com/mgbellemare/Arcade-Learning-Environment)
 * cython (pip3 package)
 * scikit-image (pip3 package)
@@ -80,17 +80,6 @@ Requirements
 ## Training the agent
 To train an agent to play, for example, pong run
 * ```python3 train.py -g pong -df logs/```
-
-For pong, the agent will begin to learn after about 5 million frames, and will learn an optimal policy after about 15 million frames.
-
-Training can be stopped, for example by using Ctrl+c, and then resumed again by running ```python3 train.py -g pong -df logs/```.
-
-On a setup with an [Intel i7-4790k](http://ark.intel.com/products/80807/Intel-Core-i7-4790K-Processor-8M-Cache-up-to-4_40-GHz) CPU and an [Nvidia GTX 980 Ti](http://www.geforce.com/hardware/desktop-gpus/geforce-gtx-980-ti) GPU with default settings, you can expect around 3000 timesteps (global steps) per second.
-Training for 80 million timesteps requires under 8 hours.
-
-Qbert
-
-![qbert learning graph](readme_files/qbert_learning_graph.png "Qbert")
 
 ### Visualizing training
 1. Open a new terminal
@@ -112,33 +101,7 @@ Std: 14.97
 ```
 
 ### Generating gifs
-Gifs can be generated from stored network weights, for example a gif of the agent playing breakout can be generated with
 ```
 python3 test.py -f pretrained/breakout/ -gn breakout
 ```
 This may take a few minutes.
-
-## Pretrained models
-Pretrained models for some games can be found [here](pretrained).
-These models can be used as starting points for training on the same game, other games, or to generate gifs.
-
-## Adapting the code
-This codebase was designed to be easily modified to new environments and new neural network architectures.
-
-### Adapting to a new environment
-The codebase currently contains a single environment, namely ```atari_emulator.py```. To train on a new environment, simply 
-create a new class that inherits from ```BaseEnvironment``` and modify ```environment_creator.py``` to create an instance of your new environment.
-
-### Adapting to new neural network architectures
-The codebase contains currently two neural network architectures, the architecture used in [Playing Atari with Deep Reinforcement Learning](https://arxiv.org/abs/1312.5602), and the architecture from [Human-level control through deep reinforcement learning](https://www.nature.com/nature/journal/v518/n7540/full/nature14236.html). Both adapted to an actor-critic algorithm.
-To create a new architecture follow the pattern demonstrated in ```NatureNetwork``` and ```NIPSNetwork```.
-Then create a new class that inherits from both the ```PolicyVNetwork``` and```YourNetwork```. For example:  ```NewArchitecturePolicyVNetwork(PolicyVNetwork, YourNetwork)```. Then use this class in ```train.py```.
-
-## Disclaimer
-The code in this repository is _not_ the code used to generate the results from the paper, but should give similar results.
-Some changes have been made:
-* Gradient clipping default value changed from 40.0 to 3.0.
-* Entropy regularization constant default changed from 0.01 to 0.02.
-* Using OpenAI Gym results in an increase in training time of 33%. This is because converting the image from RGB to Grayscale in python is slow.
-
-
