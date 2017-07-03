@@ -69,6 +69,8 @@ A CPU version of the docker container is also provided and can be run with ```do
 When running on the CPU pass the device flag ```-d '/cpu:0'``` to the training script.
 
 ## Runing locally
+If you use Anaconda, you can try ```conda env create -f environment.yml```.
+
 Requirements
 * Python 3.4+
 * TensorFlow 1.0+ (choose a GPU version, if you have GPU)
@@ -77,9 +79,10 @@ Requirements
 * scikit-image (pip3 package)
 * python3-tk
 
+
 ## Training the agent
 To train an agent to play, for example, pong run
-* ```python3 train.py -g pong -df logs/```
+* ```python3 train.py -g <game-name> -df logs/<game-name>/```
 
 ### Visualizing training
 1. Open a new terminal
@@ -102,6 +105,6 @@ Std: 14.97
 
 ### Generating gifs
 ```
-python3 test.py -f pretrained/breakout/ -gn breakout
+python3 test.py -f logs/<game-name>/ -gn breakout
 ```
 This may take a few minutes.
