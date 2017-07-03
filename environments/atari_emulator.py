@@ -2,7 +2,7 @@ import numpy as np
 from ale_python_interface import ALEInterface
 from scipy.misc import imresize
 import random
-from environment import BaseEnvironment, FramePool,ObservationPool
+from environments.environment import BaseEnvironment, FramePool,ObservationPool
 
 IMG_SIZE_X = 84
 IMG_SIZE_Y = 84

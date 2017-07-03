@@ -2,7 +2,7 @@ import numpy as np
 from multiprocessing import Process
 import tensorflow as tf
 import logging
-from logger_utils import variable_summaries
+from utilities.logger_utils import variable_summaries
 import os
 
 CHECKPOINT_INTERVAL = 1000000

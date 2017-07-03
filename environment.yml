@@ -62,8 +62,9 @@ dependencies:
   - scikit-image==0.13.0
   - scipy==0.19.1
   - six==1.10.0
-  - tensorflow==1.2.1
+  - tensorflow-gpu==1.2.1
   - tqdm==4.14.0
   - urllib3==1.21.1
   - werkzeug==0.12.2
   - zmq==0.0.0
+

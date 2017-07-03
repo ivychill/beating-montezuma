@@ -6,7 +6,7 @@ class EnvironmentCreator(object):
         :param args:
         """
 
-        from atari_emulator import AtariEmulator
+        from environments.atari_emulator import AtariEmulator
         from ale_python_interface import ALEInterface
         filename = args.rom_path + "/" + args.game + ".bin"
         ale_int = ALEInterface()

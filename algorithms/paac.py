@@ -1,17 +1,16 @@
 import time
+import numpy as np
+import logging
 from multiprocessing import Queue
 from multiprocessing.sharedctypes import RawArray
 from ctypes import c_uint, c_float
-from actor_learner import *
-import logging
 
-from emulator_runner import EmulatorRunner
-from runners import Runners
-import numpy as np
-
+from algorithms.actor_learner import *
+from environments.emulator_runner import EmulatorRunner
+from environments.runners import Runners
 
 class PAACLearner(ActorLearner):
-    def __init__(self, network_creator, environment_creator, args):
+    def __init__(self, network_creator, environment_creator, args): 
         super(PAACLearner, self).__init__(network_creator, environment_creator, args)
         self.workers = args.emulator_workers
 

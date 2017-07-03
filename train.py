@@ -5,9 +5,9 @@ import signal
 import os
 import copy
 
-import environment_creator
-from paac import PAACLearner
-from policy_v_network import NaturePolicyVNetwork, NIPSPolicyVNetwork
+from environments.environment_creator import *
+from algorithms.paac import PAACLearner
+from networks.policy_v_network import NaturePolicyVNetwork, NIPSPolicyVNetwork
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
 
@@ -50,7 +50,7 @@ def setup_kill_signal_handler(learner):
 
 
 def get_network_and_environment_creator(args, random_seed=3):
-    env_creator = environment_creator.EnvironmentCreator(args)
+    env_creator = EnvironmentCreator(args)
     num_actions = env_creator.num_actions
     args.num_actions = num_actions
     args.random_seed = random_seed
@@ -78,7 +78,7 @@ def get_arg_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument('-g', default='pong', help='Name of game', dest='game')
     parser.add_argument('-d', '--device', default='/gpu:0', type=str, help="Device to be used ('/cpu:0', '/gpu:0', '/gpu:1',...)", dest="device")
-    parser.add_argument('--rom_path', default='./atari_roms', help='Directory where the game roms are located (needed for ALE environment)', dest="rom_path")
+    parser.add_argument('--rom_path', default='./environments/atari_roms', help='Directory where the game roms are located (needed for ALE environment)', dest="rom_path")
     parser.add_argument('-v', '--visualize', default=False, type=bool_arg, help="0: no visualization of emulator; 1: all emulators, for all actors, are visualized; 2: only 1 emulator (for one of the actors) is visualized", dest="visualize")
     parser.add_argument('--e', default=0.1, type=float, help="Epsilon for the Rmsprop and Adam optimizers", dest="e")
     parser.add_argument('--alpha', default=0.99, type=float, help="Discount factor for the history/coming gradient, for the Rmsprop optimizer", dest="alpha")
@@ -101,9 +101,9 @@ def get_arg_parser():
 
 if __name__ == '__main__':
     args = get_arg_parser().parse_args()
+    from utilities.logger_utils import *
 
-    import logger_utils
-    logger_utils.save_args(args, args.debugging_folder)
+    save_args(args, args.debugging_folder)
     logging.debug(args)
 
     main(args)

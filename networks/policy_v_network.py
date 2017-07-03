@@ -1,4 +1,4 @@
-from networks import *
+from networks.networks import *
 
 
 class PolicyVNetwork(Network):
