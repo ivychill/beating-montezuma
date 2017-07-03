@@ -60,7 +60,7 @@ This repository is a fork of the PAAC algorithm presented in [Efficient Parallel
 - https://github.com/EthanMacdonald/h-DQN
 - https://github.com/steveKapturowski/tensorflow-rl
 
-# Runing via docker (recommended)
+## Runing via docker (recommended)
 1. Follow the instructions to install [nvidia-docker](https://github.com/NVIDIA/nvidia-docker/)
 2. Clone this repository
 3. Run the container with ```nvidia-docker run -it -v <absolute-path>/paac:/root/paac -p 6006:6006 alfredvc/tf1-ale```.
