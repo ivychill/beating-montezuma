@@ -11,7 +11,7 @@ This repository is a fork of the PAAC algorithm presented in [Efficient Parallel
 	* [ ] Hoyeop Kim: [Count-Based Exploration 2017](http://arxiv.org/abs/1703.01310v2)
 	* [ ] Sangjin Park: [Hierarchical RL](https://arxiv.org/abs/1604.06057v2)
 	* [ ] DH: [FeUdal Networks](https://arxiv.org/abs/1703.01161v1)
-	* [ ] HG: [UNREAL](https://arxiv.org/pdf/1611.05397.pdf)
+	* [ ] HG: [UNREAL](https://arxiv.org/abs/1611.05397]
 - By July 20th:
 	* [ ] (optional) [Feature Control as Intrinsic Motivation](https://arxiv.org/abs/1705.06769v1) 
 	* [ ] (optional) [Evolution Strategies](https://arxiv.org/pdf/1703.03864.pdf) 	
