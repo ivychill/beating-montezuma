@@ -30,8 +30,7 @@ class ActorLearner(Process):
 
         self.learning_rate = tf.placeholder(tf.float32, shape=[])
         optimizer_variable_names = 'OptimizerVariables'
-        self.optimizer = tf.train.RMSPropOptimizer(self.learning_rate, decay=args.alpha, epsilon=args.e,
-                                                   name=optimizer_variable_names)
+        self.optimizer = tf.train.RMSPropOptimizer(self.learning_rate, decay=args.alpha, epsilon=args.e, name=optimizer_variable_names)
 
         self.emulators = np.asarray([environment_creator.create_environment(i)
                                      for i in range(self.emulator_counts)])
@@ -97,7 +96,7 @@ class ActorLearner(Process):
         if reward > 1.0:
             reward = 1.0
         elif reward < -1.0:
-            reward = -1.0
+            reward = -1.0        
         return reward
 
     def init_network(self):

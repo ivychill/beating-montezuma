@@ -7,6 +7,7 @@ import copy
 
 from environments.environment_creator import *
 from algorithms.paac import PAACLearner
+from algorithms.paac_cts import PAACCTSLearner
 from networks.policy_v_network import NaturePolicyVNetwork, NIPSPolicyVNetwork
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
@@ -26,7 +27,8 @@ def main(args):
 
     network_creator, env_creator = get_network_and_environment_creator(args)
 
-    learner = PAACLearner(network_creator, env_creator, args)
+    # learner = PAACLearner(network_creator, env_creator, args)
+    learner = PAACCTSLearner(network_creator, env_creator, args)
 
     setup_kill_signal_handler(learner)
 

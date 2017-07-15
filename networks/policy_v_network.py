@@ -46,9 +46,7 @@ class PolicyVNetwork(Network):
                 self.actor_objective_advantage_term = tf.multiply(log_output_selected_action, self.adv_actor_ph)
                 self.actor_objective_entropy_term = tf.multiply(self.entropy_regularisation_strength, self.output_layer_entropy)
 
-                self.actor_objective_mean = tf.reduce_mean(tf.multiply(tf.constant(-1.0),
-                                                                       tf.add(self.actor_objective_advantage_term, self.actor_objective_entropy_term)),
-                                                           name='mean_actor_objective')
+                self.actor_objective_mean = tf.reduce_mean(tf.multiply(tf.constant(-1.0), tf.add(self.actor_objective_advantage_term, self.actor_objective_entropy_term)), name='mean_actor_objective')
 
                 self.critic_loss_mean = tf.reduce_mean(tf.scalar_mul(0.25, tf.pow(self.critic_loss, 2)), name='mean_critic_loss')
 
