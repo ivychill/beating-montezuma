@@ -18,6 +18,13 @@ This repository is a fork of the PAAC algorithm presented in [Efficient Parallel
 	* [ ] (optional) [Count-Based Exploration 2016](https://arxiv.org/pdf/1606.01868v2.pdf)
 	* [ ] (optional) [Micro-Objective Learning](https://arxiv.org/pdf/1703.03864.pdf) 
 	* [ ] (optional) [Human Checkpoint Replay](https://arxiv.org/abs/1607.05077v1) 
+	* [ ] (optional) [Surprised-based Intrinsic Motivation](https://arxiv.org/pdf/1703.01732.pdf)
+	* [ ] (optional) [VIME: Variational Information Maximizing Exploration](https://arxiv.org/abs/1605.09674)
+	* [ ] (optional) [Incentivizing Exploration With Deep Predictive Models](https://arxiv.org/abs/1507.00814)
+	* [ ] (optional) [Q-Prop: Sample-Efficient Policy Gradient with An Off-Policy Critic](https://arxiv.org/abs/1611.02247)
+	* [ ] (optional) [The Reactor: A Sample-Efficient Actor-Critic Architecture](https://arxiv.org/pdf/1704.04651.pdf)
+
+
 - By July 27th:
 
 - By Aug 3rd: 
@@ -27,12 +34,37 @@ This repository is a fork of the PAAC algorithm presented in [Efficient Parallel
 ## Goals
 - number of rooms/level explored:
 	* [ ] level 2+, 20+ rooms
-	* state-of-the-art: [19 rooms & 1 level](https://www.youtube.com/watch?v=jMDhb-Toii8)
+	* current record#1: [19 rooms & 1 level](https://www.youtube.com/watch?v=jMDhb-Toii8)
 - score:
 	* [ ] 3500+
-	* state-of-the-art#1: [3500](https://gym.openai.com/envs/MontezumaRevenge-v0)
+	* current record#1: [3500](https://gym.openai.com/envs/MontezumaRevenge-v0)
+	* current record#2: The paper suggests this is probably the best trial and the agent wasn't able to reproduce this level of result easily. [6600](https://www.youtube.com/watch?v=EzQwCmGtEHs&feature=youtu.be) 
 
-## Models
+## Montezuma's Revenge
+Montezuma's Revenge is an early example of the Metroidvania genre.[1] The player controls a character called Panama Joe (a.k.a. Pedro), moving him from room to room in the labyrinthine underground pyramid of the 16th century Aztec temple of emperor Montezuma II, filled with enemies, obstacles, traps, and dangers. The objective is to score points by gathering jewels and killing enemies along the way. Panama Joe must find keys to open doors, collect and use equipment such as torches, swords, amulets, etc., and avoid or defeat the challenges in his path. Obstacles are laser gates, conveyor belts, disappearing floors and fire pits.[2][3][4]
+
+Movement is achieved by jumping, running, sliding down poles, and climbing chains and ladders. Enemies are skulls, snakes, and spiders. A further complication arises in the bottom-most floors of each pyramid, which must be played in total darkness unless a torch is found.
+
+The pyramid is nine floors deep, not counting the topmost entry room that the player drops into at the start of each level, and has 99 rooms to explore. The goal is to reach the Treasure Chamber, whose entrance is in the center room of the lowest level. After jumping in here, the player has a short time to jump from one chain to another and pick up as many jewels as possible. However, jumping onto a fireman's pole will immediately take the player to the next level; when time runs out, the player is automatically thrown onto the pole.
+
+There are nine difficulty levels in all. Though the basic layout of the pyramid remains the same from one level to the next, small changes in details force the player to rethink strategy. These changes include:
+
+Blocking or opening up certain paths (by adding/removing walls or ladders)
+Adding enemies and obstacles
+Rearrangement of items
+More dark rooms and fewer torches (in level 9, the entire pyramid is dark and there are no torches)
+Enemies that do not disappear after they kill Panama Joe (starting with level 5)
+The player can reach only the left half of the pyramid in level 1, and only the right half in level 2. Starting with level 3, the entire pyramid is open for exploration.
+
+[source](https://en.wikipedia.org/wiki/Montezuma%27s_Revenge_(video_game))
+
+### Items
+- Hammer: If Joe touches a hammer, the killer creatures get harmless for a short time and are displayed in grey.
+- Jewel: Joe gets 1000 points for each jewel collected.
+- Key: Only the key with the same colour fits into each door. Their colours are red, dark blue and bright blue.
+- Sword: If Joe has a sword, he can eliminate a killer creature when touching it.
+- Torch: The torch lights the dark rooms.
+
 
 ## Resources
 ### RL algorithms practice
@@ -50,8 +82,10 @@ This repository is a fork of the PAAC algorithm presented in [Efficient Parallel
 - attention
 - ES Evolution strategies: https://arxiv.org/pdf/1703.03864.pdf 
 - option critic...
+- https://arxiv.org/abs/1703.01732
 
 ### other readings
+- exploration: https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-7-action-selection-strategies-for-exploration-d3a97b7cceaf
 - https://www.reddit.com/r/MachineLearning/comments/45fa9o/why_montezuma_revenge_doesnt_work_in_deepmind/
 - https://news.ycombinator.com/item?id=11862027
 
@@ -108,3 +142,10 @@ Std: 14.97
 python3 test.py -f logs/<game-name>/ -gn breakout
 ```
 This may take a few minutes.
+
+
+### ideas
+- segmentation -> objects detection
+- attention model
+- transfer learning
+- life -> give larger penalty for losing a life
