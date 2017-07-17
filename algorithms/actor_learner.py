@@ -90,14 +90,16 @@ class ActorLearner(Process):
             self.last_saving_step = self.global_step
             self.network_saver.save(self.session, self.network_checkpoint_folder, global_step=self.last_saving_step)
             self.optimizer_saver.save(self.session, self.optimizer_checkpoint_folder, global_step=self.last_saving_step)
+    
 
-    def rescale_reward(self, reward):
+    def rescale_reward(self, reward, state=None):
         """ Clip raw reward """
         if reward > 1.0:
             reward = 1.0
         elif reward < -1.0:
             reward = -1.0        
         return reward
+
 
     def init_network(self):
         import os

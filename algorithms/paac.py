@@ -121,7 +121,6 @@ class PAACLearner(ActorLearner):
         self._imd_vars['start_time'] = start_time
         self._imd_vars['counter'] = 0
 
-
     def _run_actors(self):
         shared_states = self._imd_vars['shared_states']
         shared_rewards = self._imd_vars['shared_rewards']
@@ -159,7 +158,7 @@ class PAACLearner(ActorLearner):
 
             for env_i, (raw_reward, episode_over) in enumerate(zip(shared_rewards, shared_episode_over)):
                 total_episode_rewards[env_i] += raw_reward
-                reward = self.rescale_reward(raw_reward)
+                reward = self.rescale_reward(raw_reward, states[t][env_i])
                 rewards[t, env_i] = reward
                 emulator_steps[env_i] += 1                    
                 

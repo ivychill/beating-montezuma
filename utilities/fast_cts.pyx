@@ -1,6 +1,6 @@
-# credit: https://github.com/steveKapturowski/tensorflow-rl/blob/master/utils/cts.py
 #cython initializedcheck=False, boundscheck=False, wraparound=False, nonecheck=False, cdivision=True
 # CTS code adapted from https://github.com/mgbellemare/SkipCTS
+# credit: https://github.com/steveKapturowski/tensorflow-rl/blob/master/utils/cts.py
 
 cimport cython
 import numpy as np

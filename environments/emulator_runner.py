@@ -18,6 +18,7 @@ class EmulatorRunner(Process):
     def _run(self):
         count = 0
         while True:
+        
             instruction = self.queue.get()
             if instruction is None:
                 break
@@ -40,6 +41,9 @@ class EmulatorRunner(Process):
             
             count += 1
             
+            # barrier is a queue shared by all workers
+            # when a worker is done executing actions for envs it manages
+            # it puts True to barrier which later should be 
             self.barrier.put(True)
 
 

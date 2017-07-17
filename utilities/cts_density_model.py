@@ -8,7 +8,7 @@ class CTSDensityModel(object):
     Implementation of CTS Density Model described in the paper
     "Unifying Count-Based Exploration and Intrinsic Motivation" (https//arxiv.org/abs/1606.01868)
     '''
-    def __init__(self, height=21, width=21, beta=0.05):
+    def __init__(self, height, width, beta):
         self.beta = beta
         self.factors = np.array([[CTS(4) for _ in range(width)] for _ in range(height)])
 
