@@ -1,32 +1,28 @@
 # Beating Montezuma's Revenge
 This repository is a fork of the PAAC algorithm presented in [Efficient Parallel Methods for Deep Reinforcement Learning](https://arxiv.org/abs/1705.04862).
 
+## Training the agent
+To train an agent to play, for example, pong run
+* ```python3 train.py -g <game-name> -df logs/<game-name>/ -algo paac_cts```
+
 ## Todos
-- [ ] July 5th Wed, 6:10-7:10pm:
-	* [ ] [play Montezuma's Revenge yourself](http://www.free80sarcade.com/2600_Montezumas_Revenge.php) 
-	* [ ] train any algorithm of your choice on Montezuma's Revenge and share results (testing environment shared here)
-	* [ ] (optional) read [NLP-based solution to MZ](https://arxiv.org/pdf/1704.05539v1.pdf)
-	* [ ] (optional) read [why MZ is hard](https://arxiv.org/pdf/1604.00289.pdf)
-- [ ] By July 15th Sat, 2-4pm:
-	* [ ] Hoyeop Kim: [Count-Based Exploration 2017](http://arxiv.org/abs/1703.01310v2)
-	* [ ] Sangjin Park: [Hierarchical RL](https://arxiv.org/abs/1604.06057v2)
-	* [ ] DH: [FeUdal Networks](https://arxiv.org/abs/1703.01161v1)
-	* [ ] HG: [UNREAL](https://arxiv.org/abs/1611.05397]
-- By July 20th:
-	* [ ] (optional) [Feature Control as Intrinsic Motivation](https://arxiv.org/abs/1705.06769v1) 
-	* [ ] (optional) [Evolution Strategies](https://arxiv.org/pdf/1703.03864.pdf) 	
-	* [ ] (optional) [Count-Based Exploration 2016](https://arxiv.org/pdf/1606.01868v2.pdf)
-	* [ ] (optional) [Micro-Objective Learning](https://arxiv.org/pdf/1703.03864.pdf) 
-	* [ ] (optional) [Human Checkpoint Replay](https://arxiv.org/abs/1607.05077v1) 
-	* [ ] (optional) [Surprised-based Intrinsic Motivation](https://arxiv.org/pdf/1703.01732.pdf)
-	* [ ] (optional) [VIME: Variational Information Maximizing Exploration](https://arxiv.org/abs/1605.09674)
-	* [ ] (optional) [Incentivizing Exploration With Deep Predictive Models](https://arxiv.org/abs/1507.00814)
-	* [ ] (optional) [Q-Prop: Sample-Efficient Policy Gradient with An Off-Policy Critic](https://arxiv.org/abs/1611.02247)
-	* [ ] (optional) [The Reactor: A Sample-Efficient Actor-Critic Architecture](https://arxiv.org/pdf/1704.04651.pdf)
+- [x] July 5th Wed, 6:10-7:10pm:
+	* [x] [play Montezuma's Revenge yourself](http://www.free80sarcade.com/2600_Montezumas_Revenge.php) 
+	* [x] train any algorithm of your choice on Montezuma's Revenge and share results (testing environment shared here)
+	* [x] (optional) read [NLP-based solution to MZ](https://arxiv.org/pdf/1704.05539v1.pdf)
+	* [x] (optional) read [why MZ is hard](https://arxiv.org/pdf/1604.00289.pdf)
+- [x] By July 15th Sat, 2-4pm:
+	* [x] Hoyeop Kim: [Count-Based Exploration 2017](http://arxiv.org/abs/1703.01310v2)
+	* [x] Sangjin Park: [Hierarchical RL](https://arxiv.org/abs/1604.06057v2)
+	* [x] DH: [FeUdal Networks](https://arxiv.org/abs/1703.01161v1)
+	* [x] HG: [UNREAL](https://arxiv.org/abs/1611.05397]
 
-
+- By July 20th: 9:30pm:
+	* [x] DH: modularize paac.py
+	* [x] DH: integrate CTS to paac.py
+	* [ ] Sangjin: try MOL bonus
+	* [ ] HG: try feature control bonus
 - By July 27th:
-
 - By Aug 3rd: 
 - By Aug 10th
 	* [ ] publish results (play video, blogpost)
@@ -83,6 +79,16 @@ The player can reach only the left half of the pyramid in level 1, and only the 
 - ES Evolution strategies: https://arxiv.org/pdf/1703.03864.pdf 
 - option critic...
 - https://arxiv.org/abs/1703.01732
+* [ ] (optional) [Feature Control as Intrinsic Motivation](https://arxiv.org/abs/1705.06769v1) 
+* [ ] (optional) [Evolution Strategies](https://arxiv.org/pdf/1703.03864.pdf) 	
+* [ ] (optional) [Count-Based Exploration 2016](https://arxiv.org/pdf/1606.01868v2.pdf)
+* [ ] (optional) [Micro-Objective Learning](https://arxiv.org/pdf/1703.03864.pdf) 
+* [ ] (optional) [Human Checkpoint Replay](https://arxiv.org/abs/1607.05077v1) 
+* [ ] (optional) [Surprised-based Intrinsic Motivation](https://arxiv.org/pdf/1703.01732.pdf)
+* [ ] (optional) [VIME: Variational Information Maximizing Exploration](https://arxiv.org/abs/1605.09674)
+* [ ] (optional) [Incentivizing Exploration With Deep Predictive Models](https://arxiv.org/abs/1507.00814)
+* [ ] (optional) [Q-Prop: Sample-Efficient Policy Gradient with An Off-Policy Critic](https://arxiv.org/abs/1611.02247)
+* [ ] (optional) [The Reactor: A Sample-Efficient Actor-Critic Architecture](https://arxiv.org/pdf/1704.04651.pdf)
 
 ### other readings
 - exploration: https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-7-action-selection-strategies-for-exploration-d3a97b7cceaf
