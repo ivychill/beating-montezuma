@@ -3,9 +3,9 @@ from multiprocessing import Process
 
 class EmulatorRunner(Process):
 
-    def __init__(self, id, emulators, variables, queue, barrier):
+    def __init__(self, worker_id, emulators, variables, queue, barrier):
         super(EmulatorRunner, self).__init__()
-        self.id = id
+        self.worker_id = worker_id
         self.emulators = emulators
         self.variables = variables
         self.queue = queue
@@ -21,15 +21,25 @@ class EmulatorRunner(Process):
             instruction = self.queue.get()
             if instruction is None:
                 break
-            for i, (emulator, action) in enumerate(zip(self.emulators, self.variables[-1])):
+            
+            shared_states = self.variables[0]
+            shared_rewards = self.variables[1]
+            shared_episode_over = self.variables[2]
+            shared_actions = self.variables[3]
+            
+            for i, (emulator, action) in enumerate(zip(self.emulators, self.variables[-1])):            
+                emulator = self.emulators[i]
+                action = shared_actions[i]            
                 new_s, reward, episode_over = emulator.next(action)
                 if episode_over:
-                    self.variables[0][i] = emulator.get_initial_state()
+                    shared_states[i] = emulator.get_initial_state()
                 else:
-                    self.variables[0][i] = new_s
-                self.variables[1][i] = reward
-                self.variables[2][i] = episode_over
+                    shared_states[i] = new_s            
+                shared_rewards[i] = reward
+                shared_episode_over[i] = episode_over
+            
             count += 1
+            
             self.barrier.put(True)
 
 

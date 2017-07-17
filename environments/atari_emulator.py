@@ -100,10 +100,10 @@ class AtariEmulator(BaseEnvironment):
 
         reward = self.__action_repeat(np.argmax(action))
         self.observation_pool.new_observation(self.frame_pool.get_processed_frame())
-        terminal = self.__is_terminal()
+        episode_over = self.__is_terminal()
         self.lives = self.ale.lives()
         observation = self.observation_pool.get_pooled_observations()
-        return observation, reward, terminal
+        return observation, reward, episode_over
             
     def __is_terminal(self):
         if self.single_life_episodes:

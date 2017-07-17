@@ -43,8 +43,11 @@ class Runners(object):
 
     def update_environments(self):
         for queue in self.queues:
+            # block until a free slot is available
             queue.put(True)
 
     def wait_updated(self):
-        for wd in range(self.workers):
+        # this makes possible synchronous updates
+        for _ in range(self.workers):
+            # block until worker is done executing.
             self.barrier.get()
