@@ -1,6 +1,5 @@
 #cython initializedcheck=False, boundscheck=False, wraparound=False, nonecheck=False, cdivision=True
 # CTS code adapted from https://github.com/mgbellemare/SkipCTS
-# credit: https://github.com/steveKapturowski/tensorflow-rl/blob/master/utils/cts.py
 
 cimport cython
 import numpy as np
@@ -288,7 +287,7 @@ cdef class CTSDensityModel:
 
 
     def update(self, obs):
-        obs = resize(obs, (self.height, self.width), preserve_range=True)
+        obs = resize(obs, (self.height, self.width), preserve_range=True, mode='constant')
         obs = np.floor((obs*self.num_bins)).astype(np.int32)
         
         log_prob, log_recoding_prob = self._update(obs)
@@ -303,10 +302,10 @@ cdef class CTSDensityModel:
 
         for i in range(self.height):
             for j in range(self.width):
-                context[0] = obs[i, j-1] if j > 0 else 0
-                context[1] = obs[i-1, j] if i > 0 else 0
-                context[2] = obs[i-1, j-1] if i > 0 and j > 0 else 0
-                context[3] = obs[i-1, j+1] if i > 0 and j < self.width-1 else 0
+                context[3] = obs[i, j-1] if j > 0 else 0
+                context[2] = obs[i-1, j] if i > 0 else 0
+                context[1] = obs[i-1, j-1] if i > 0 and j > 0 else 0
+                context[0] = obs[i-1, j+1] if i > 0 and j < self.width-1 else 0
 
                 log_prob += cts_update(&self.cts_factors[i][j], context, obs[i, j])
                 log_recoding_prob += cts_log_prob(&self.cts_factors[i][j], context, obs[i, j])

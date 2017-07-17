@@ -8,8 +8,9 @@ PixelCNN
 # from actor_learner import ONE_LIFE_GAMES
 
 from algorithms.paac import PAACLearner
-from utilities.cts_density_model import CTSDensityModel
+# from utilities.cts_density_model import CTSDensityModel
 # from utilities.fast_cts import CTSDensityModel
+from utilities.cts_bonus import ExplorationBonus
 
 class PAACCTSLearner(PAACLearner):
     """docstring for PAACCTSLearner"""
@@ -18,18 +19,20 @@ class PAACCTSLearner(PAACLearner):
 
 
         model_args = {
-            'height': 84,
-            'width': 84,
+            'height': 42,
+            'width': 42,
+            'num_bins': 8,
             'beta': 0.05
         }
 
-        self._density_model = CTSDensityModel(**model_args)
-        self.bonuses = []
-
+        # self._density_model = CTSDensityModel(**model_args)
+        # self.bonuses = []
+        self._density_model = ExplorationBonus()
 
     def _compute_bonus(self, state):
-        latest_state = state[..., -1]
-        return self._density_model.update(latest_state)
+        latest_state = state[:,:, -1]
+        # return self._density_model.update(latest_state)
+        return self._density_model.bonus(latest_state)
 
 
     def rescale_reward(self, reward, state):
@@ -40,4 +43,5 @@ class PAACCTSLearner(PAACLearner):
             reward = -1.0        
         bonus = self._compute_bonus(state)
         reward += bonus
+        # print(reward)
         return reward

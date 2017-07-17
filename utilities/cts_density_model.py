@@ -14,7 +14,7 @@ class CTSDensityModel(object):
 
 
     def update(self, obs):
-        obs = resize(obs, self.factors.shape)
+        obs = resize(obs, self.factors.shape, mode='constant')
 
         context = [0, 0, 0, 0]
         log_prob = 0.0

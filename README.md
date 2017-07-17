@@ -118,6 +118,7 @@ Requirements
 * cython (pip3 package)
 * scikit-image (pip3 package)
 * python3-tk
+* opencv (opencv-python)
 
 
 ## Training the agent
