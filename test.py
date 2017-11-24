@@ -1,12 +1,12 @@
 import os
 from train import get_network_and_environment_creator, bool_arg
-import logger_utils
+from utilities import logger_utils
 import argparse
 import numpy as np
 import time
 import tensorflow as tf
 import random
-from paac import PAACLearner
+from algorithms.paac import PAACLearner
 
 
 def get_save_frame(name):
